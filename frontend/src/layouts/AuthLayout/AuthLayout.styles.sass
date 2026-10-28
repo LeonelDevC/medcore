@@ -1,0 +1,31 @@
+// Layout público (login/recuperación): marca, ThemeToggle y panel centrado.
+
+.auth
+  display: flex
+  flex-direction: column
+  min-height: 100dvh
+  background-color: var(--bg)
+  color: var(--text)
+
+  &__bar
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 16px
+
+    @media (min-width: 640px)
+      padding: 16px 24px
+
+  &__main
+    display: flex
+    flex: 1
+    align-items: flex-start
+    justify-content: center
+    padding: 40px 16px
+
+    @media (min-width: 640px)
+      align-items: center
+
+  &__panel
+    width: 100%
+    max-width: 24rem

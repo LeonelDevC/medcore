@@ -1,0 +1,76 @@
+// Tokens de diseño — fuente: spect/especificaciones-ssd.md §2.1 y §2.6.
+//
+// Este es el ÚNICO archivo del proyecto que puede contener colores literales
+// (regla T3). Los componentes usan `var(--token)`, nunca hex ni rgb().
+//
+// El tema se resuelve con `data-theme="light|dark"` en <html> (T1/T2). `:root`
+// repite el tema claro para que la app tenga tokens aunque el atributo falte.
+
+:root,
+[data-theme='light']
+  color-scheme: light
+
+  // Superficies y texto
+  --bg: #f7fafc
+  --surface: #ffffff
+  --surface-2: #f0f6fb
+  --border: #dce6f1
+  --text: #1f2937
+  --text-muted: #6b7280
+
+  // Marca: el azul es el único color de marca (R2)
+  --primary: #1d4ed8
+  --primary-soft: #dbeafe
+  --primary-hover: #1e40af
+  --on-primary: #ffffff
+
+  // Semánticos: solo texto, icono y borde
+  --success: #047857
+  --warning: #b45309
+  --danger: #b91c1c
+  --info: #1d4ed8
+
+  // Fondos desaturados de estado: solo superficies pequeñas (§2.1)
+  --success-bg: #d1fae5
+  --warning-bg: #fef3c7
+  --danger-bg: #fee2e2
+  --info-bg: #dbeafe
+
+  // Única sombra permitida (§2.4: máximo 0 1px 2px)
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.05)
+
+  // Velo del drawer móvil. Derivado: no está en §2.6, pero evita que los
+  // componentes usen un color literal (T3). Nunca es fondo de sección.
+  --overlay: rgba(0, 0, 0, 0.4)
+
+  // Tipografía (§2.2): Inter si está disponible, si no la pila del sistema
+  --font-ui: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif
+
+[data-theme='dark']
+  color-scheme: dark
+
+  --bg: #0b1220
+  --surface: #111a2b
+  --surface-2: #16223a
+  --border: #22304a
+  --text: #e5edf7
+  --text-muted: #94a3b8
+
+  // En oscuro el azul se aclara y --on-primary pasa a oscuro (regla T5)
+  --primary: #60a5fa
+  --primary-soft: #1b3358
+  --primary-hover: #93c5fd
+  --on-primary: #0b1220
+
+  --success: #34d399
+  --warning: #fbbf24
+  --danger: #f87171
+  --info: #60a5fa
+
+  --success-bg: #10362b
+  --warning-bg: #3a2a0b
+  --danger-bg: #3b1418
+  --info-bg: #1b3358
+
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4)
+  --overlay: rgba(0, 0, 0, 0.6)

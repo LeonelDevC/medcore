@@ -1,0 +1,24 @@
+// Estructura del layout autenticado: sidebar + columna de contenido.
+// Los fondos son siempre --bg o --surface (R6).
+
+.app
+  display: flex
+  min-height: 100dvh
+  background-color: var(--bg)
+  color: var(--text)
+
+  &__body
+    display: flex
+    flex-direction: column
+    min-width: 0
+    flex: 1
+
+  &__content
+    flex: 1
+    padding: 24px 16px
+
+    @media (min-width: 640px)
+      padding: 24px
+
+    @media (min-width: 1024px)
+      padding: 24px 32px

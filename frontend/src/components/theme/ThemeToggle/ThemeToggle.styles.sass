@@ -1,0 +1,51 @@
+// Switch de tema (§4.1, T1): icono + etiqueta textual de 12px.
+// El color del control sale siempre de tokens, en ambos temas (T3/T5).
+
+.theme-toggle
+  display: inline-flex
+  align-items: center
+  gap: 8px
+  height: 32px
+  padding: 0 10px
+  border: 1px solid var(--border)
+  border-radius: 6px
+  background-color: var(--surface)
+  color: var(--text)
+  font-size: 12px
+  font-weight: 500
+  cursor: pointer
+  transition: background-color 120ms ease, border-color 120ms ease
+
+  &:hover
+    background-color: var(--surface-2)
+
+  &__label
+    line-height: 1
+
+  &__track
+    position: relative
+    width: 28px
+    height: 16px
+    border: 1px solid var(--border)
+    border-radius: 999px
+    background-color: var(--surface-2)
+    transition: background-color 120ms ease, border-color 120ms ease
+
+  &__thumb
+    position: absolute
+    top: 2px
+    left: 2px
+    width: 10px
+    height: 10px
+    border-radius: 50%
+    background-color: var(--text-muted)
+    transition: left 120ms ease, background-color 120ms ease
+
+  &--dark
+    .theme-toggle__track
+      border-color: var(--primary)
+      background-color: var(--primary-soft)
+
+    .theme-toggle__thumb
+      left: 14px
+      background-color: var(--primary)

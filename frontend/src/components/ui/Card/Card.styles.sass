@@ -1,0 +1,10 @@
+// Tarjeta (§4.1): borde sutil, radio 8px y la única sombra permitida (§2.4).
+
+@use '../../../styles/mixins' as *
+
+.card
+  @include card-surface
+  padding: 16px
+
+  @media (min-width: 640px)
+    padding: 24px

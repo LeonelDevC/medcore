@@ -1,0 +1,45 @@
+// Mixins compartidos por los componentes.
+//
+// Aquí vive la repetición estructural (tarjeta, foco, texto oculto); los
+// valores de color siempre son tokens, nunca literales (T3).
+
+@mixin focus-ring
+  outline: 2px solid var(--primary)
+  outline-offset: 2px
+
+@mixin card-surface($radius: 8px)
+  background-color: var(--surface)
+  border: 1px solid var(--border)
+  border-radius: $radius
+  box-shadow: var(--shadow)
+
+@mixin truncate
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+@mixin visually-hidden
+  position: absolute
+  width: 1px
+  height: 1px
+  margin: -1px
+  padding: 0
+  overflow: hidden
+  clip: rect(0 0 0 0)
+  white-space: nowrap
+  border: 0
+
+@mixin button-reset
+  margin: 0
+  padding: 0
+  border: 0
+  background: none
+  font: inherit
+  color: inherit
+  cursor: pointer
+
+// Ritmo vertical de una página (§2.3: gap entre secciones 24-32px)
+@mixin page-stack
+  display: flex
+  flex-direction: column
+  gap: 24px

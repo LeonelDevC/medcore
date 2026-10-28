@@ -1,0 +1,64 @@
+// Header de contenido (§3): título de página + acciones contextuales.
+// No es una navbar: no lleva logo, ni enlaces, ni CTA (C3).
+
+@use '../../../styles/mixins' as *
+
+.content-header
+  position: sticky
+  top: 0
+  z-index: 20
+  display: flex
+  align-items: center
+  flex-shrink: 0
+  gap: 12px
+  height: 64px
+  padding: 0 16px
+  border-bottom: 1px solid var(--border)
+  background-color: var(--bg)
+
+  @media (min-width: 640px)
+    padding: 0 24px
+
+  @media (min-width: 1024px)
+    padding: 0 32px
+
+  &__menu
+    @include button-reset
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-shrink: 0
+    width: 36px
+    height: 36px
+    margin-left: -4px
+    border-radius: 6px
+    color: var(--text-muted)
+    transition: background-color 120ms ease, color 120ms ease
+
+    &:hover
+      background-color: var(--surface-2)
+      color: var(--text)
+
+    @media (min-width: 1024px)
+      display: none
+
+  &__titles
+    min-width: 0
+    flex: 1
+
+  &__title
+    @include truncate
+    font-size: 24px
+    font-weight: 600
+    color: var(--text)
+
+  &__description
+    @include truncate
+    font-size: 12px
+    color: var(--text-muted)
+
+  &__actions
+    display: flex
+    align-items: center
+    flex-shrink: 0
+    gap: 8px

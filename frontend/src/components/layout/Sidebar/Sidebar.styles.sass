@@ -1,0 +1,154 @@
+// Sidebar colapsable (§3). Sin navbar horizontal: esta es la navegación.
+// En escritorio es fija (240px / 64px); en móvil se convierte en drawer.
+
+@use '../../../styles/mixins' as *
+
+.sidebar
+  display: none
+  position: sticky
+  top: 0
+  flex-direction: column
+  flex-shrink: 0
+  width: 240px
+  height: 100dvh
+  border-right: 1px solid var(--border)
+  background-color: var(--surface)
+  transition: width 150ms ease
+
+  @media (min-width: 1024px)
+    display: flex
+
+  &__head
+    display: flex
+    align-items: center
+    flex-shrink: 0
+    height: 64px
+    padding: 0 16px
+    border-bottom: 1px solid var(--border)
+
+  &__nav
+    display: flex
+    flex: 1
+    flex-direction: column
+    gap: 4px
+    padding: 8px
+    overflow-y: auto
+
+  &__link
+    display: flex
+    align-items: center
+    gap: 12px
+    height: 40px
+    padding: 0 10px
+    border-radius: 6px
+    font-size: 14px
+    font-weight: 500
+    color: var(--text-muted)
+    text-decoration: none
+    transition: background-color 120ms ease, color 120ms ease
+
+    &:hover
+      background-color: var(--surface-2)
+      color: var(--text)
+
+    &--active
+      background-color: var(--primary-soft)
+      color: var(--primary)
+
+      &:hover
+        background-color: var(--primary-soft)
+        color: var(--primary)
+
+  &__label
+    @include truncate
+
+  &__foot
+    flex-shrink: 0
+    padding: 8px
+    border-top: 1px solid var(--border)
+
+  &__toggle
+    @include button-reset
+    display: flex
+    align-items: center
+    gap: 12px
+    width: 100%
+    height: 40px
+    padding: 0 10px
+    border-radius: 6px
+    font-size: 14px
+    font-weight: 500
+    color: var(--text-muted)
+    transition: background-color 120ms ease, color 120ms ease
+
+    &:hover
+      background-color: var(--surface-2)
+      color: var(--text)
+
+  &__toggle-label
+    @include truncate
+
+  &--collapsed
+    width: 64px
+
+    .sidebar__head
+      justify-content: center
+      padding: 0
+
+    .sidebar__link
+      justify-content: center
+      gap: 0
+      padding: 0
+
+    .sidebar__toggle
+      justify-content: center
+      gap: 0
+      padding: 0
+
+.drawer
+  position: fixed
+  inset: 0
+  z-index: 40
+
+  @media (min-width: 1024px)
+    display: none
+
+  &__backdrop
+    @include button-reset
+    position: absolute
+    inset: 0
+    width: 100%
+    background-color: var(--overlay)
+
+  &__panel
+    position: relative
+    display: flex
+    flex-direction: column
+    width: 240px
+    height: 100%
+    border-right: 1px solid var(--border)
+    background-color: var(--surface)
+
+  &__head
+    display: flex
+    align-items: center
+    justify-content: space-between
+    flex-shrink: 0
+    height: 64px
+    padding: 0 16px
+    border-bottom: 1px solid var(--border)
+
+  &__close
+    @include button-reset
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 36px
+    height: 36px
+    border-radius: 6px
+    color: var(--text-muted)
+    transition: background-color 120ms ease, color 120ms ease
+
+    &:hover
+      background-color: var(--surface-2)
+      color: var(--text)

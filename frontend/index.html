@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Gestión clínica: pacientes, citas, personal, estudios DICOM e informes médicos."
+    />
+    <title>Hospital · Gestión clínica</title>
+    <!--
+      Tema antes del primer paint (specs 2.6/T2, plan T0.4).
+      Este script es el único punto que decide el tema inicial: lee `theme` de
+      localStorage y, si no hay elección guardada, respeta `prefers-color-scheme`.
+      Va en <head> para que `data-theme` exista antes de que se pinte nada.
+    -->
+    <script>
+      ;(function () {
+        var stored = null
+        try {
+          stored = window.localStorage.getItem('theme')
+        } catch (error) {
+          stored = null
+        }
+        var prefersDark =
+          typeof window.matchMedia === 'function' &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+        var theme =
+          stored === 'light' || stored === 'dark' ? stored : prefersDark ? 'dark' : 'light'
+        var root = document.documentElement
+        root.setAttribute('data-theme', theme)
+        // `color-scheme` evita el lienzo blanco del navegador mientras carga el CSS.
+        root.style.colorScheme = theme
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

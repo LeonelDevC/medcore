@@ -1,0 +1,77 @@
+// Estilos globales: reset mínimo y base tipográfica.
+// Nada de estilos de componentes aquí: cada componente trae su .styles.sass.
+
+@use './tokens'
+@use './mixins' as *
+
+*,
+*::before,
+*::after
+  box-sizing: border-box
+
+html
+  -webkit-text-size-adjust: 100%
+
+body
+  margin: 0
+  min-height: 100dvh
+  background-color: var(--bg)
+  color: var(--text)
+  font-family: var(--font-ui)
+  font-size: 16px
+  line-height: 1.5
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+#root
+  min-height: 100dvh
+
+h1,
+h2,
+h3,
+h4
+  margin: 0
+  line-height: 1.2
+  text-wrap: balance
+
+p
+  margin: 0
+
+a
+  color: inherit
+
+button,
+input,
+select,
+textarea
+  font: inherit
+  color: inherit
+
+svg
+  flex-shrink: 0
+
+// Foco visible en todos los interactivos (C8)
+:focus-visible
+  @include focus-ring
+
+// R5: no existe texto por debajo de 12px
+small
+  font-size: 12px
+
+::selection
+  background-color: var(--primary-soft)
+  color: var(--text)
+
+// Utilidad de accesibilidad para etiquetas que solo lee el lector de pantalla
+.sr-only
+  @include visually-hidden
+
+// Respeta a quien pide menos movimiento (C8)
+@media (prefers-reduced-motion: reduce)
+  *,
+  *::before,
+  *::after
+    animation-duration: 0.01ms !important
+    animation-iteration-count: 1 !important
+    transition-duration: 0.01ms !important
+    scroll-behavior: auto !important
