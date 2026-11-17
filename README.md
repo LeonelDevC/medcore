@@ -1,6 +1,6 @@
 # Hospital · MVP Clínico
 
-Sistema de gestión hospitalaria web minimalista basado en el estándar SSDD (`spect/especificaciones-ssd.md`).
+Sistema de gestión hospitalaria web minimalista basado en el estándar SSDD (`specs/especificaciones-ssd.md`).
 
 ## Módulos del MVP (M1–M7)
 - **M1 Autenticación:** Login, recuperación y logout con roles `admin` y `medico`.
@@ -20,4 +20,4 @@ Sistema de gestión hospitalaria web minimalista basado en el estándar SSDD (`s
 ## Estructura del Proyecto
 - `frontend/`: Aplicación React + TypeScript + Vite + SASS modular.
 - `backend/`: API en Go con arquitectura modular.
-- `spect/`: Especificaciones SSDD y plan de desarrollo.
+- `specs/`: Constitución, especificaciones SSDD y plan de desarrollo.
