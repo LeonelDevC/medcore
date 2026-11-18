@@ -1,8 +1,9 @@
-﻿import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { ContentHeader } from '../../components/layout/ContentHeader/ContentHeader'
 import { Sidebar, SidebarDrawer } from '../../components/layout/Sidebar/Sidebar'
 import { ThemeToggle } from '../../components/theme/ThemeToggle/ThemeToggle'
+import { RoleSwitcher } from '../../components/session/RoleSwitcher/RoleSwitcher'
 import { useCurrentRole } from '../../hooks/useRole'
 import { findNavItem, navItemsForRole } from '../../routes/nav'
 import './AppLayout.styles.sass'
@@ -48,10 +49,11 @@ export function AppLayout() {
 
       <div className="app__body">
         <ContentHeader
-          title={current?.label ?? 'PÃ¡gina no encontrada'}
+          title={current?.label ?? 'Página no encontrada'}
           description={current?.description}
           onOpenMenu={() => setDrawerOpen(true)}
         >
+          <RoleSwitcher />
           <ThemeToggle />
         </ContentHeader>
 

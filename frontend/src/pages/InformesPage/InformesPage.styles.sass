@@ -2,3 +2,494 @@
 
 .informes-page
   @include page-stack
+
+  &__header
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-between
+    gap: 16px
+
+  &__title-group
+    display: flex
+    flex-direction: column
+    gap: 4px
+
+  &__title-row
+    display: flex
+    align-items: center
+    gap: 10px
+
+  &__header-icon
+    color: var(--primary)
+
+  &__title
+    margin: 0
+    font-size: 20px
+    font-weight: 600
+    color: var(--text)
+
+  &__subtitle
+    margin: 0
+    font-size: 14px
+    color: var(--text-muted)
+
+  // Alertas
+  &__alert
+    display: flex
+    align-items: center
+    gap: 10px
+    padding: 10px 14px
+    border-radius: 6px
+    font-size: 14px
+    border: 1px solid transparent
+
+    &--success
+      background-color: var(--success-bg)
+      color: var(--success)
+      border-color: var(--success)
+
+    &--danger
+      background-color: var(--danger-bg)
+      color: var(--danger)
+      border-color: var(--danger)
+
+  &__alert-close
+    @include button-reset
+    margin-left: auto
+    font-size: 18px
+    line-height: 1
+    color: inherit
+    padding: 0 4px
+
+  // Filtros contextuales (C4: sin buscador global)
+  &__filters-bar
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-between
+    gap: 12px
+    padding: 4px 0
+
+  &__chips-group
+    display: flex
+    flex-wrap: wrap
+    gap: 8px
+
+  &__chip
+    @include button-reset
+    padding: 6px 14px
+    border-radius: 20px
+    font-size: 13px
+    font-weight: 500
+    color: var(--text-muted)
+    background-color: var(--surface)
+    border: 1px solid var(--border)
+    transition: all 0.15s ease
+
+    &:hover
+      color: var(--text)
+      border-color: var(--primary)
+
+    &--active
+      background-color: var(--primary-soft)
+      color: var(--primary)
+      border-color: var(--primary)
+      font-weight: 600
+
+  &__patient-filter
+    display: flex
+    align-items: center
+    gap: 8px
+
+  &__patient-label
+    font-size: 13px
+    color: var(--text-muted)
+
+  // Tabla
+  &__table-card
+    padding: 0
+    overflow: hidden
+
+  &__table
+    width: 100%
+    border-collapse: collapse
+    font-size: 14px
+    text-align: left
+
+    th
+      padding: 12px 16px
+      background-color: var(--surface-2)
+      color: var(--text-muted)
+      font-weight: 600
+      font-size: 12px
+      text-transform: uppercase
+      letter-spacing: 0.04em
+      border-bottom: 1px solid var(--border)
+
+    td
+      padding: 14px 16px
+      color: var(--text)
+      border-bottom: 1px solid var(--border)
+      vertical-align: middle
+
+    tr:last-child td
+      border-bottom: none
+
+    tr:hover td
+      background-color: var(--surface-2)
+
+  &__cell-id
+    font-family: monospace
+    font-size: 13px
+    color: var(--text-muted)
+
+  &__cell-patient
+    color: var(--text)
+
+  &__cell-motivo
+    max-width: 280px
+    @include truncate
+
+  &__cell-date
+    white-space: nowrap
+    color: var(--text-muted)
+
+  &__col-action
+    text-align: right
+
+  &__row-btn
+    display: inline-flex
+    align-items: center
+    gap: 6px
+
+  // Badges de estado (C5: texto explícito >= 12px, sin dots diminutos)
+  &__badge
+    display: inline-flex
+    align-items: center
+    gap: 6px
+    padding: 4px 10px
+    border-radius: 4px
+    font-size: 12px
+    font-weight: 600
+    line-height: 1
+    border: 1px solid transparent
+
+    &--borrador
+      color: var(--warning)
+      background-color: var(--warning-bg)
+      border-color: var(--warning)
+
+    &--firmado
+      color: var(--success)
+      background-color: var(--success-bg)
+      border-color: var(--success)
+
+  // Botón volver
+  &__back-btn
+    @include button-reset
+    display: inline-flex
+    align-items: center
+    gap: 6px
+    font-size: 14px
+    font-weight: 500
+    color: var(--primary)
+    padding: 4px 0
+    transition: opacity 0.15s
+
+    &:hover
+      opacity: 0.8
+
+  // Editor / Formulario
+  &__editor-card
+    padding: 24px
+
+  &__editor-header
+    display: flex
+    flex-direction: column
+    gap: 8px
+    margin-bottom: 20px
+    padding-bottom: 16px
+    border-bottom: 1px solid var(--border)
+
+  &__editor-title
+    margin: 0
+    font-size: 18px
+    font-weight: 600
+    color: var(--text)
+
+  &__form
+    display: flex
+    flex-direction: column
+    gap: 18px
+
+  &__form-grid
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 16px
+
+    @media (max-width: 720px)
+      grid-template-columns: 1fr
+
+  &__field
+    display: flex
+    flex-direction: column
+    gap: 6px
+
+  &__label
+    font-size: 13px
+    font-weight: 600
+    color: var(--text)
+
+  &__required
+    color: var(--danger)
+
+  &__input,
+  &__select,
+  &__textarea
+    width: 100%
+    padding: 8px 12px
+    border-radius: 6px
+    border: 1px solid var(--border)
+    background-color: var(--surface)
+    color: var(--text)
+    font-family: inherit
+    font-size: 14px
+    box-shadow: var(--shadow)
+    transition: border-color 0.15s
+
+    &:focus
+      @include focus-ring
+
+  &__select--sm
+    padding: 6px 10px
+    font-size: 13px
+    width: auto
+
+  &__textarea
+    resize: vertical
+    line-height: 1.5
+
+  &__study-banner
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-between
+    gap: 12px
+    padding: 12px 16px
+    border-radius: 6px
+    background-color: var(--surface-2)
+    border: 1px solid var(--border)
+
+  &__study-banner-info
+    display: flex
+    align-items: center
+    gap: 8px
+    font-size: 13px
+    color: var(--text)
+
+  &__form-actions
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 12px
+    margin-top: 10px
+    padding-top: 16px
+    border-top: 1px solid var(--border)
+
+  &__form-actions-right
+    display: flex
+    align-items: center
+    gap: 10px
+
+  // Vista del Visor de Informe Clínico
+  &__viewer
+    display: flex
+    flex-direction: column
+    gap: 16px
+
+  &__viewer-toolbar
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-between
+    gap: 12px
+
+  &__viewer-actions
+    display: flex
+    align-items: center
+    gap: 10px
+
+  &__document
+    padding: 32px
+    display: flex
+    flex-direction: column
+    gap: 24px
+
+  &__doc-header
+    display: flex
+    flex-direction: column
+    gap: 16px
+    padding-bottom: 20px
+    border-bottom: 2px solid var(--border)
+
+  &__doc-header-main
+    display: flex
+    flex-direction: column
+    gap: 8px
+
+  &__doc-badge-group
+    display: flex
+    align-items: center
+    gap: 12px
+
+  &__doc-id
+    font-family: monospace
+    font-size: 13px
+    color: var(--text-muted)
+
+  &__doc-title
+    margin: 0
+    font-size: 22px
+    font-weight: 700
+    color: var(--text)
+
+  &__doc-meta-grid
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))
+    gap: 12px
+    padding: 14px
+    background-color: var(--surface-2)
+    border-radius: 6px
+    border: 1px solid var(--border)
+
+  &__doc-meta-item
+    display: flex
+    align-items: center
+    gap: 8px
+    font-size: 13px
+
+    &--highlight
+      grid-column: 1 / -1
+      color: var(--success)
+      font-weight: 600
+
+  &__doc-meta-label
+    display: inline-flex
+    align-items: center
+    gap: 4px
+    color: var(--text-muted)
+
+  &__doc-meta-val
+    color: var(--text)
+
+  &__doc-body
+    display: flex
+    flex-direction: column
+    gap: 20px
+
+  &__doc-section
+    display: flex
+    flex-direction: column
+    gap: 6px
+
+  &__doc-section-title
+    margin: 0
+    font-size: 14px
+    font-weight: 700
+    color: var(--text-muted)
+    text-transform: uppercase
+    letter-spacing: 0.05em
+
+  &__doc-section-text
+    margin: 0
+    font-size: 15px
+    line-height: 1.6
+    color: var(--text)
+
+    &--pre
+      white-space: pre-wrap
+
+  // Adendas
+  &__adendas-section
+    margin-top: 12px
+    padding-top: 20px
+    border-top: 1px dashed var(--border)
+    display: flex
+    flex-direction: column
+    gap: 14px
+
+  &__adendas-header
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 12px
+
+  &__adenda-form
+    display: flex
+    flex-direction: column
+    gap: 10px
+    padding: 16px
+    border-radius: 6px
+    background-color: var(--surface-2)
+    border: 1px solid var(--border)
+
+  &__adenda-actions
+    display: flex
+    justify-content: flex-end
+    gap: 10px
+
+  &__error-msg
+    margin: 0
+    font-size: 13px
+    color: var(--danger)
+
+  &__adendas-list
+    display: flex
+    flex-direction: column
+    gap: 12px
+
+  &__adenda-item
+    padding: 14px 16px
+    border-radius: 6px
+    background-color: var(--surface-2)
+    border-left: 3px solid var(--primary)
+
+  &__adenda-meta
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    gap: 12px
+    font-size: 12px
+    color: var(--text-muted)
+    margin-bottom: 6px
+
+  &__adenda-idx
+    font-weight: 700
+    color: var(--primary)
+
+  &__adenda-text
+    margin: 0
+    font-size: 14px
+    line-height: 1.5
+    color: var(--text)
+
+  &__adendas-empty
+    margin: 0
+    font-size: 13px
+    color: var(--text-muted)
+    font-style: italic
+
+// Estilos de impresión (Constitución & SSDD M7)
+@media print
+  .no-print
+    display: none !important
+
+  .informes-page
+    gap: 0
+
+  .informes-page__document
+    border: none !important
+    box-shadow: none !important
+    padding: 0 !important
+    background: transparent !important

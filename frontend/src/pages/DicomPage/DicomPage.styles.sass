@@ -2,3 +2,278 @@
 
 .dicom-page
   @include page-stack
+  height: calc(100vh - 120px)
+  min-height: 600px
+
+  &__header
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-between
+    gap: 16px
+
+  &__title-group
+    display: flex
+    flex-direction: column
+    gap: 4px
+
+  &__title
+    margin: 0
+    font-size: 20px
+    font-weight: 600
+    color: var(--text)
+
+  &__subtitle
+    margin: 0
+    font-size: 14px
+    color: var(--text-muted)
+
+  &__actions
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    gap: 12px
+
+  &__workspace
+    display: grid
+    grid-template-columns: 1fr 320px
+    gap: 20px
+    flex: 1
+    min-height: 0
+
+    @media (max-width: 960px)
+      grid-template-columns: 1fr
+      grid-template-rows: auto auto
+
+  &__viewport-container
+    position: relative
+    display: flex
+    flex-direction: column
+    background-color: #000000
+    border: 1px solid var(--border)
+    border-radius: 8px
+    overflow: hidden
+    min-height: 480px
+    box-shadow: var(--shadow)
+
+  &__viewport-canvas-wrapper
+    position: relative
+    flex: 1
+    width: 100%
+    height: 100%
+    overflow: hidden
+    cursor: default
+
+    &--pan
+      cursor: grab
+
+      &:active
+        cursor: grabbing
+
+    &--measure
+      cursor: crosshair
+
+  &__canvas
+    position: absolute
+    top: 0
+    left: 0
+    transform-origin: 0 0
+    image-rendering: pixelated
+
+  &__overlay-canvas
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    pointer-events: none
+
+  &__hud
+    position: absolute
+    pointer-events: none
+    padding: 12px 16px
+    font-family: monospace
+    font-size: 12px
+    line-height: 1.4
+    color: #e5edf7
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8)
+
+    &--tl
+      top: 0
+      left: 0
+
+    &--tr
+      top: 0
+      right: 0
+      text-align: right
+
+    &--bl
+      bottom: 0
+      left: 0
+
+    &--br
+      bottom: 0
+      right: 0
+      text-align: right
+
+  &__hud-badge
+    display: inline-flex
+    align-items: center
+    gap: 6px
+    padding: 3px 8px
+    border-radius: 4px
+    font-family: inherit
+    font-size: 12px
+    font-weight: 500
+
+    &--calibrated
+      background-color: var(--success-bg)
+      color: var(--success)
+
+    &--uncalibrated
+      background-color: var(--warning-bg)
+      color: var(--warning)
+
+  &__sidebar
+    display: flex
+    flex-direction: column
+    gap: 16px
+    overflow-y: auto
+    padding-right: 4px
+
+  &__panel-section
+    display: flex
+    flex-direction: column
+    gap: 10px
+
+  &__section-title
+    margin: 0
+    font-size: 13px
+    font-weight: 600
+    text-transform: uppercase
+    letter-spacing: 0.5px
+    color: var(--text-muted)
+
+  &__tools-grid
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    gap: 8px
+
+  &__presets-grid
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    gap: 8px
+
+  &__tool-btn
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 8px
+    height: 36px
+    padding: 0 10px
+    font-size: 13px
+    font-weight: 500
+    background-color: var(--surface)
+    border: 1px solid var(--border)
+    border-radius: 6px
+    color: var(--text)
+    cursor: pointer
+    transition: background-color 0.15s, border-color 0.15s
+
+    &:hover
+      background-color: var(--surface-2)
+      border-color: var(--primary)
+
+    &:focus-visible
+      @include focus-ring
+
+    &--active
+      background-color: var(--primary-soft)
+      border-color: var(--primary)
+      color: var(--primary)
+      font-weight: 600
+
+  &__slider-row
+    display: flex
+    flex-direction: column
+    gap: 4px
+
+  &__slider-label
+    display: flex
+    justify-content: space-between
+    font-size: 12px
+    color: var(--text-muted)
+
+    span
+      font-weight: 600
+      color: var(--text)
+
+  &__slider
+    width: 100%
+    accent-color: var(--primary)
+    cursor: pointer
+
+  &__measurements-list
+    display: flex
+    flex-direction: column
+    gap: 8px
+    max-height: 180px
+    overflow-y: auto
+
+  &__measurement-item
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 8px 10px
+    background-color: var(--surface-2)
+    border: 1px solid var(--border)
+    border-radius: 6px
+    font-size: 13px
+
+  &__measurement-info
+    display: flex
+    flex-direction: column
+    gap: 2px
+
+  &__measurement-val
+    font-weight: 600
+    color: var(--text)
+
+  &__measurement-tag
+    font-size: 11px
+    color: var(--text-muted)
+
+    &--warning
+      color: var(--warning)
+      font-weight: 500
+
+  &__delete-btn
+    @include button-reset
+    color: var(--text-muted)
+    padding: 4px
+    border-radius: 4px
+
+    &:hover
+      color: var(--danger)
+      background-color: var(--danger-bg)
+
+    &:focus-visible
+      @include focus-ring
+
+  &__metadata-table
+    width: 100%
+    font-size: 12px
+    border-collapse: collapse
+
+    td
+      padding: 4px 0
+      border-bottom: 1px solid var(--border)
+
+      &:first-child
+        color: var(--text-muted)
+        width: 45%
+
+      &:last-child
+        color: var(--text)
+        font-weight: 500
+        text-align: right

@@ -6,6 +6,8 @@
  * así que dejar la variable vacía también funciona.
  */
 
+import { getToken } from './session'
+
 const API_BASE_URL = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/+$/, '') ?? ''
 
 /** `true` cuando hay una URL de API configurada o se usa el proxy de Vite. */
@@ -37,12 +39,14 @@ type ApiErrorPayload = {
 export async function apiFetch<T>(path: string, options: ApiRequestOptions = {}): Promise<T> {
   const { body, token, headers, ...rest } = options
 
+  const effectiveToken = token ?? getToken()
+
   const response = await fetch(`${API_BASE_URL}${path}`, {
     ...rest,
     headers: {
       Accept: 'application/json',
       ...(body !== undefined ? { 'Content-Type': 'application/json' } : {}),
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(effectiveToken ? { Authorization: `Bearer ${effectiveToken}` } : {}),
       ...headers,
     },
     body: body !== undefined ? JSON.stringify(body) : undefined,

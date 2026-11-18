@@ -18,6 +18,11 @@ export function getRole(): Role | null {
   return role
 }
 
+/** Devuelve el token bearer configurado para el rol actual */
+export function getToken(): string {
+  return role === 'medico' ? 'dev-medico-token' : 'dev-admin-token'
+}
+
 export function setRole(next: Role | null): void {
   if (next === role) return
   role = next

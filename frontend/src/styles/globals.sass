@@ -50,9 +50,37 @@ textarea
 svg
   flex-shrink: 0
 
-// Foco visible en todos los interactivos (C8)
+table,
+time,
+.metric-value,
+.dicom-page__hud-line
+  font-variant-numeric: tabular-nums
+
+// Foco visible en todos los interactivos (C8) con micro-transición
 :focus-visible
   @include focus-ring
+  transition: outline-offset var(--dur-fast) var(--ease-spring)
+
+// Animaciones fluidas de microinteracciones (Emil Kowalski / Impeccable)
+@keyframes ui-modal-enter
+  from
+    opacity: 0
+    transform: scale(0.98) translateY(6px)
+  to
+    opacity: 1
+    transform: scale(1) translateY(0)
+
+@keyframes ui-backdrop-enter
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+.modal-backdrop
+  animation: ui-backdrop-enter var(--dur-fast) var(--ease-smooth) forwards
+
+.modal-content
+  animation: ui-modal-enter var(--dur-base) var(--ease-spring) forwards
 
 // R5: no existe texto por debajo de 12px
 small

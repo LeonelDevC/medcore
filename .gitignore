@@ -38,3 +38,12 @@ backend/tmp/
 *.njsproj
 *.sln
 *.sw?
+
+# Herramientas de IA y Agentes (Graphify, EGM)
+.agents/
+graphify-out/
+.graphify*
+*.graphify*
+.egm/
+*.egm*
+

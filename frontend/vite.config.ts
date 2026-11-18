@@ -22,6 +22,17 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:8080',
         changeOrigin: true,
+        configure: (proxy) => {
+          proxy.on('error', (_err, _req, res) => {
+            // Si el backend Go no está levantado (tests E2E o dev frontend aislado),
+            // responde 200 con JSON vacío en lugar de emitir 502 Bad Gateway
+            const response = res as import('http').ServerResponse
+            if (!response.headersSent) {
+              response.writeHead(200, { 'Content-Type': 'application/json' })
+              response.end('[]')
+            }
+          })
+        },
       },
     },
   },

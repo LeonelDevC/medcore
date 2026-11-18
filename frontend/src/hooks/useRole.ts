@@ -6,3 +6,7 @@ import type { Role } from '../types'
 export function useCurrentRole(): Role | null {
   return useSyncExternalStore(subscribeRole, getRole, () => null)
 }
+
+/** Alias para conveniencia y consistencia */
+export const useRole = useCurrentRole
+
